@@ -14,7 +14,7 @@ You can find all information on using the Logger in the Wiki under: https://gith
 * [Symfony Var-Dumper](https://packagist.org/packages/symfony/var-dumper) >= 3.2
 * [Symfony Console](https://packagist.org/packages/symfony/console) >= 3.2
 
-## Other versions
+## Other Versions
 
 You can find the Logger adapted for other PHP versions in the following branches:
 
