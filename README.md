@@ -8,11 +8,11 @@ You can find all information on using the Logger in the Wiki under: https://gith
 
 ## Prerequisites
 
-* PHP >= 7.1
-* PSR-Log >= 1.0 (https://packagist.org/packages/psr/log)
-* Monolog >= 1.22 (https://packagist.org/packages/monolog/monolog)
-* Symfony Var-Dumper >= 3.2 (https://packagist.org/packages/symfony/var-dumper)
-* Symfony Console >= 3.2 (https://packagist.org/packages/symfony/console)
+* [PHP](http://www.php.net) >= 7.1
+* [PSR-Log](https://packagist.org/packages/psr/log) >= 1.0
+* [Monolog](https://packagist.org/packages/monolog/monolog) >= 1.22
+* [Symfony Var-Dumper](https://packagist.org/packages/symfony/var-dumper) >= 3.2
+* [Symfony Console](https://packagist.org/packages/symfony/console) >= 3.2
 
 ## Other versions
 
