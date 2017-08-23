@@ -1,0 +1,23 @@
+{
+  "name": "kairichter/logger",
+  "description": "Kai Richter - Logger",
+  "license": "GPL-2.0+",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Kai Richter",
+      "email": "k.richter@reply.de",
+      "homepage": "https://portaltech.reply.com"
+    }
+  ],
+  "require": {
+    "php": "~7.1",
+    "psr/log": "~1.0",
+    "monolog/monolog": "~1.22",
+    "symfony/var-dumper": "~3.2",
+    "symfony/console": "~3.2"
+  },
+  "autoload": {
+    "psr-4": {"Kairichter\\Logger\\": "src/"}
+  }
+}
