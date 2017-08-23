@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger;
 
@@ -32,11 +32,11 @@ class Logger implements LoggerInterface
     /**
      * Construct
      *
-     * @param Log[] $logs
+     * @ param Log ...$logs
      */
-    public function __construct(Log ...$logs)
+    public function __construct()
     {
-        if (!empty($logs)) {
+        if ($logs = func_get_args()) {
             $this->setLogs($logs);
         }
     }
@@ -82,7 +82,7 @@ class Logger implements LoggerInterface
      *
      * @return Log[]
      */
-    public function getLogs(): array
+    public function getLogs()
     {
         return $this->logs;
     }
@@ -93,7 +93,7 @@ class Logger implements LoggerInterface
      * @param string $name
      * @return Log|null
      */
-    public function getLog(string $name): ?Log
+    public function getLog($name)
     {
         if (isset($this->logs[$name])) {
             return $this->logs[$name];
@@ -117,7 +117,7 @@ class Logger implements LoggerInterface
      * @param string $className
      * @return HandlerInterface[]
      */
-    public function getHandlers(string $className = null): array
+    public function getHandlers($className = null)
     {
         $result = [];
         foreach ($this->getLogs() as $log) {
@@ -147,7 +147,7 @@ class Logger implements LoggerInterface
      * @param array $context
      * @return bool
      */
-    public function log($level, $message, array $context = []): bool
+    public function log($level, $message, array $context = [])
     {
         $level = Log::toMonologLevel($level);
         if ($method = strtolower(Log::getLevelName($level))) {
@@ -179,11 +179,12 @@ class Logger implements LoggerInterface
      * Throw an exception and log an error for it
      *
      * @param string $message
-     * @param string|\string[] ...$arguments
      * @throws \Exception
      */
-    public function throwException(string $message, string ...$arguments)
+    public function throwException($message)
     {
+        $arguments = func_get_args();
+        array_shift($arguments);
         $message = vsprintf($message, $arguments);
         $info = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
         $this->error('Exception with message "%s" in %s::%s', [$message, $info[1]['class'], $info[1]['function']]);
@@ -203,7 +204,7 @@ class Logger implements LoggerInterface
      *
      * @return float
      */
-    public function stopMeasurement(): float
+    public function stopMeasurement()
     {
         if (!empty($this->measurement)) {
             $start = $this->measurement;
@@ -220,7 +221,7 @@ class Logger implements LoggerInterface
      * @param bool $realUsage Report real size of memory allocated from system
      * @param string $newLine Separator between two lines
      */
-    public function reportMeasurement(bool $realUsage = false, string $newLine = null)
+    public function reportMeasurement($realUsage = false, $newLine = null)
     {
         $this->debug($this->getMeasurementReport($realUsage, $newLine));
     }
@@ -232,7 +233,7 @@ class Logger implements LoggerInterface
      * @param string $newLine Separator between two lines
      * @return string
      */
-    public function getMeasurementReport(bool $realUsage = false, string $newLine = null): string
+    public function getMeasurementReport($realUsage = false, $newLine = null)
     {
         $newLine = $newLine ?: PHP_EOL;
         $line = '---------------------------------';
@@ -267,7 +268,7 @@ class Logger implements LoggerInterface
      *
      * @param string $name
      */
-    public function flush(string $name = null)
+    public function flush($name = null)
     {
         foreach ($this->getLogs() as $log) {
             if (($name === null || $log->getName() === $name) && $handlers = $log->getHandlers()) {

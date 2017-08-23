@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Handler;
 
@@ -32,7 +32,7 @@ class BufferHandler extends BaseBufferHandler
      *
      * @return HandlerInterface
      */
-    public function getHandler(): HandlerInterface
+    public function getHandler()
     {
         return $this->handler;
     }
@@ -63,7 +63,7 @@ class BufferHandler extends BaseBufferHandler
      * @param array $record
      * @return bool
      */
-    public function handle(array $record): bool
+    public function handle(array $record)
     {
         if ($record['level'] < $this->level) {
             return false;

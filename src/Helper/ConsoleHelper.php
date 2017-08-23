@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Helper;
 
@@ -65,7 +65,7 @@ class ConsoleHelper
      * @param string $default The default answer to return if the user enters nothing
      * @return string The answer
      */
-    public function askQuestion(string $text, string $default = null): string
+    public function askQuestion($text, $default = null)
     {
         $question = new Question("\r\n" . $text . ' ', $default);
         return $this->questionHelper->ask($this->input, $this->output, $question);
@@ -77,7 +77,7 @@ class ConsoleHelper
      * @param string $text The text to show
      * @return string The password
      */
-    public function askPassword(string $text): string
+    public function askPassword($text)
     {
         $question = new Question("\r\n" . $text . ' ');
         $question->setHidden(true);
@@ -92,7 +92,7 @@ class ConsoleHelper
      * @param bool $default The default answer to return if the user enters nothing
      * @return bool True if answer is "y"
      */
-    public function askConfirmation(string $text, bool $default = false): bool
+    public function askConfirmation($text, $default = false)
     {
         $question = new ConfirmationQuestion("\r\n" . $text . ' ', $default);
         return (bool)$this->questionHelper->ask($this->input, $this->output, $question);
@@ -106,7 +106,7 @@ class ConsoleHelper
      * @param string $default The default answer to return if the user enters nothing
      * @return string The answer
      */
-    public function askDecision(string $text, array $answers, $default = null): string
+    public function askDecision($text, array $answers, $default = null)
     {
         $question = new ChoiceQuestion("\r\n" . $text . ' ', $answers, $default);
         return $this->questionHelper->ask($this->input, $this->output, $question);
@@ -118,7 +118,7 @@ class ConsoleHelper
      * @param string $description Description of the progress bar
      * @param int $max Maximal value
      */
-    public function startProgress(string $description, int $max)
+    public function startProgress($description, $max)
     {
         $this->output->writeln("\n" . $description);
 
@@ -139,7 +139,7 @@ class ConsoleHelper
      *
      * @param int $step Number of steps to advance
      */
-    public function advanceProgress(int $step = 1)
+    public function advanceProgress($step = 1)
     {
         if ($this->progressBar) {
             $this->progressBar->advance($step);

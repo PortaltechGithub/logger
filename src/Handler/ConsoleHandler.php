@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Handler;
 
@@ -28,7 +28,7 @@ class ConsoleHandler extends AbstractProcessingHandler
      *
      * @param int $level The minimum logging level at which this handler will be triggered
      */
-    public function __construct(int $level = Log::DEBUG)
+    public function __construct($level = Log::DEBUG)
     {
         parent::__construct($level);
 
@@ -41,7 +41,7 @@ class ConsoleHandler extends AbstractProcessingHandler
      * @param array $record Partial log record containing only a level key
      * @return bool
      */
-    public function isHandling(array $record): bool
+    public function isHandling(array $record)
     {
         if (PHP_SAPI !== 'cli') {
             return false;
@@ -55,7 +55,7 @@ class ConsoleHandler extends AbstractProcessingHandler
      *
      * @return FormatterInterface
      */
-    protected function getDefaultFormatter(): FormatterInterface
+    protected function getDefaultFormatter()
     {
         return new LineFormatter('%message%');
     }
@@ -80,7 +80,7 @@ class ConsoleHandler extends AbstractProcessingHandler
      * @param int $level
      * @return string
      */
-    protected function getLevelType(int $level): string
+    protected function getLevelType($level)
     {
         switch ($level ?: $this->level) {
             case Log::INFO:

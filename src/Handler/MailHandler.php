@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Handler;
 
@@ -23,7 +23,7 @@ class MailHandler extends BaseMailHandler
      * @param callable $mailer A callable to send mails
      * @param int $level The minimum logging level at which this handler will be triggered
      */
-    public function __construct(callable $mailer, int $level = Log::ERROR)
+    public function __construct(callable $mailer, $level = Log::ERROR)
     {
         parent::__construct($level);
 
@@ -36,7 +36,7 @@ class MailHandler extends BaseMailHandler
      * @param array $record Partial log record containing only a level key
      * @return bool Whether the given record will be handled
      */
-    public function isHandling(array $record): bool
+    public function isHandling(array $record)
     {
         if ($this->mailer === null || !is_callable($this->mailer)) {
             return false;
@@ -61,7 +61,7 @@ class MailHandler extends BaseMailHandler
      *
      * @return FormatterInterface
      */
-    protected function getDefaultFormatter(): FormatterInterface
+    protected function getDefaultFormatter()
     {
         return new LineFormatter("[%datetime%] %level_name%: %message%\r\n");
     }

@@ -28,7 +28,7 @@ class DoctrineMongoDbHandler extends AbstractProcessingHandler
      * @param string $collectionName Collection name
      * @param int $level The minimum logging level at which this handler will be triggered
      */
-    public function __construct(ManagerRegistry $managerRegistry, string $collectionName, int $level = Log::DEBUG)
+    public function __construct(ManagerRegistry $managerRegistry, $collectionName, $level = Log::DEBUG)
     {
         if (!empty($collectionName)) {
             /** @var DocumentManager $manager */
@@ -53,7 +53,7 @@ class DoctrineMongoDbHandler extends AbstractProcessingHandler
      * @param array $record Partial log record containing only a level key
      * @return bool
      */
-    public function isHandling(array $record): bool
+    public function isHandling(array $record)
     {
         if (!($this->collection instanceof Collection)) {
             return false;
@@ -77,7 +77,7 @@ class DoctrineMongoDbHandler extends AbstractProcessingHandler
      *
      * @return FormatterInterface
      */
-    protected function getDefaultFormatter(): FormatterInterface
+    protected function getDefaultFormatter()
     {
         return new NormalizerFormatter();
     }

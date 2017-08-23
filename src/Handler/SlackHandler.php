@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Handler;
 
@@ -29,7 +29,7 @@ class SlackHandler extends BaseSlackHandler
      * @param string $bot Name of the bot
      * @param int $level The minimum logging level at which this handler will be triggered
      */
-    public function __construct(string $project, string $token, string $channel, string $bot, int $level = Log::DEBUG)
+    public function __construct($project, $token, $channel, $bot, $level = Log::DEBUG)
     {
         $this->project = $project;
 
@@ -45,7 +45,7 @@ class SlackHandler extends BaseSlackHandler
      * @param array $record Partial log record containing only a level key
      * @return bool
      */
-    public function isHandling(array $record): bool
+    public function isHandling(array $record)
     {
         if (!$this->isActive) {
             return false;
@@ -60,7 +60,7 @@ class SlackHandler extends BaseSlackHandler
      * @param array $record
      * @return array
      */
-    protected function prepareContentData($record): array
+    protected function prepareContentData($record)
     {
         $dataArray = parent::prepareContentData($record);
 

@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Processor;
 
@@ -15,7 +15,7 @@ class VsprintfProcessor
      * @param array $record
      * @return array
      */
-    public function __invoke(array $record): array
+    public function __invoke(array $record)
     {
         if (!empty($record['context']) && is_array($record['context'])) {
             if (strpos($record['message'], '%') !== false) {

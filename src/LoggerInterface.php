@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger;
 
@@ -30,7 +30,7 @@ interface LoggerInterface extends PsrLoggerInterface
      *
      * @return Log[]
      */
-    public function getLogs(): array;
+    public function getLogs();
 
     /**
      * Get log by name
@@ -38,7 +38,7 @@ interface LoggerInterface extends PsrLoggerInterface
      * @param string $name
      * @return Log|null
      */
-    public function getLog(string $name): ?Log;
+    public function getLog($name);
 
     /**
      * Remove log
@@ -53,7 +53,7 @@ interface LoggerInterface extends PsrLoggerInterface
      * @param string $className
      * @return HandlerInterface[]
      */
-    public function getHandlers(string $className = null): array;
+    public function getHandlers($className = null);
 
     /**
      * Log an exception as message
@@ -66,10 +66,9 @@ interface LoggerInterface extends PsrLoggerInterface
      * Throw an exception and log an error for it
      *
      * @param string $message
-     * @param string|\string[] ...$arguments
      * @throws \Exception
      */
-    public function throwException(string $message, string ...$arguments);
+    public function throwException($message);
 
     /**
      * Start measurement of code execution time
@@ -81,7 +80,7 @@ interface LoggerInterface extends PsrLoggerInterface
      *
      * @return float
      */
-    public function stopMeasurement(): float;
+    public function stopMeasurement();
 
     /**
      * Log report of measurement and memory usage
@@ -89,7 +88,7 @@ interface LoggerInterface extends PsrLoggerInterface
      * @param bool $realUsage Report real size of memory allocated from system
      * @param string $newLine Separator between two lines
      */
-    public function reportMeasurement(bool $realUsage = false, string $newLine = null);
+    public function reportMeasurement($realUsage = false, $newLine = null);
 
     /**
      * Build report of measurement and memory usage
@@ -98,7 +97,7 @@ interface LoggerInterface extends PsrLoggerInterface
      * @param string $newLine Separator between two lines
      * @return string
      */
-    public function getMeasurementReport(bool $realUsage = false, string $newLine = null): string;
+    public function getMeasurementReport($realUsage = false, $newLine = null);
 
     /**
      * Debug given data
@@ -116,5 +115,5 @@ interface LoggerInterface extends PsrLoggerInterface
      *
      * @param string $name
      */
-    public function flush(string $name = null);
+    public function flush($name = null);
 }

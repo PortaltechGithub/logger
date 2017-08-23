@@ -18,7 +18,7 @@ class MongoDbHandler extends BaseMongoDbHandler
      * @param string $collectionName Collection name
      * @param int $level The minimum logging level at which this handler will be triggered
      */
-    public function __construct(\Mongo $mongoDb, string $databaseName, string $collectionName, int $level = Log::DEBUG)
+    public function __construct(\Mongo $mongoDb, $databaseName, $collectionName, $level = Log::DEBUG)
     {
         if (!empty($databaseName) && !empty($collectionName)) {
             parent::__construct($mongoDb, $databaseName, $collectionName, $level, false);
@@ -31,7 +31,7 @@ class MongoDbHandler extends BaseMongoDbHandler
      * @param array $record Partial log record containing only a level key
      * @return bool
      */
-    public function isHandling(array $record): bool
+    public function isHandling(array $record)
     {
         if (!($this->mongoCollection instanceof \MongoCollection)) {
             return false;

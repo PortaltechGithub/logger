@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger;
 
@@ -31,8 +31,8 @@ class LogFactory
      */
     public static function createLog(
         HandlerInterface $handler,
-        string $name
-    ): Log {
+        $name
+    ) {
         return new Log($name, [$handler], [new VsprintfProcessor()]);
     }
 
@@ -46,9 +46,9 @@ class LogFactory
      */
     public static function createBufferedLog(
         HandlerInterface $handler,
-        bool $enableBuffer,
-        string $name
-    ): Log {
+        $enableBuffer,
+        $name
+    ) {
         return static::createLog(new BufferHandler($handler, $enableBuffer), $name);
     }
 
@@ -61,9 +61,9 @@ class LogFactory
      * @return Log
      */
     public static function createConsoleLog(
-        string $name = 'console',
-        int $level = Log::DEBUG
-    ): Log {
+        $name = 'console',
+        $level = Log::DEBUG
+    ) {
         return static::createBufferedLog(new ConsoleHandler($level), false, $name);
     }
 
@@ -77,11 +77,11 @@ class LogFactory
      * @return Log
      */
     public static function createFileLog(
-        string $filename,
-        int $maxFiles = 14,
-        string $name = 'file',
-        int $level = Log::INFO
-    ): Log {
+        $filename,
+        $maxFiles = 14,
+        $name = 'file',
+        $level = Log::INFO
+    ) {
         $handler = new FileHandler($filename, $maxFiles, $level);
         $handler->pushProcessor(new UidProcessor);
 
@@ -98,9 +98,9 @@ class LogFactory
      */
     public static function createMailLog(
         callable $mailer,
-        string $name = 'mail',
-        int $level = Log::INFO
-    ): Log {
+        $name = 'mail',
+        $level = Log::INFO
+    ) {
         return static::createBufferedLog(new MailHandler($mailer, $level), true, $name);
     }
 
@@ -116,11 +116,11 @@ class LogFactory
      */
     public static function createNativeMailLog(
         $receiver,
-        string $subject,
-        string $from,
-        string $name = 'native',
-        int $level = Log::INFO
-    ): Log {
+        $subject,
+        $from,
+        $name = 'native',
+        $level = Log::INFO
+    ) {
         return static::createBufferedLog(new NativeMailerHandler($receiver, $subject, $from, $level), true, $name);
     }
 
@@ -136,9 +136,9 @@ class LogFactory
     public static function createSwiftMailLog(
         \Swift_Mailer $mailer,
         $message,
-        string $name = 'swift',
-        int $level = Log::INFO
-    ): Log {
+        $name = 'swift',
+        $level = Log::INFO
+    ) {
         return static::createBufferedLog(new SwiftMailerHandler($mailer, $message, $level), true, $name);
     }
 
@@ -156,13 +156,13 @@ class LogFactory
      * @return Log
      */
     public static function createSlackLog(
-        string $project,
-        string $token,
-        string $channel,
-        string $bot,
-        string $name = 'slack',
-        int $level = Log::ERROR
-    ): Log {
+        $project,
+        $token,
+        $channel,
+        $bot,
+        $name = 'slack',
+        $level = Log::ERROR
+    ) {
         return static::createLog(new SlackHandler($project, $token, $channel, $bot, $level), $name);
     }
 
@@ -180,10 +180,10 @@ class LogFactory
      */
     public static function createMongoDbLog(
         \Mongo $mongo,
-        string $databaseName,
-        string $collectionName,
-        string $name = 'mongodb',
-        int $level = Log::DEBUG
+        $databaseName,
+        $collectionName,
+        $name = 'mongodb',
+        $level = Log::DEBUG
     ) {
         return static::createLog(new MongoDbHandler($mongo, $databaseName, $collectionName, $level), $name);
     }
@@ -199,9 +199,9 @@ class LogFactory
      */
     public static function createDoctrineMongoDbLog(
         ManagerRegistry $managerRegistry,
-        string $collectionName,
-        string $name = 'doctrinemongodb',
-        int $level = Log::DEBUG
+        $collectionName,
+        $name = 'doctrinemongodb',
+        $level = Log::DEBUG
     ) {
         return static::createLog(new DoctrineMongoDbHandler($managerRegistry, $collectionName, $level), $name);
     }

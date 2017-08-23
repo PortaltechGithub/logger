@@ -1,4 +1,4 @@
-<?php declare (strict_types = 1);
+<?php
 
 namespace Kairichter\Logger\Handler;
 
@@ -16,7 +16,7 @@ class FileHandler extends RotatingFileHandler
      *
      * @return FormatterInterface
      */
-    protected function getDefaultFormatter(): FormatterInterface
+    protected function getDefaultFormatter()
     {
         return new LineFormatter("[%datetime%] %level_name%: %message%\n");
     }
