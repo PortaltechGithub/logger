@@ -1,7 +1,7 @@
 {
   "name": "kairichter/logger",
   "description": "Kai Richter - Logger",
-  "license": "GPL-2.0+",
+  "license": "MIT",
   "type": "library",
   "authors": [
     {
