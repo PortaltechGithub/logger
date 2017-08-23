@@ -1,23 +1,18 @@
 # Logger - Allgemeiner Logger basierend auf dem PSR-3 Logger-Interface
 
+> **Dies ist die PHP 7.0 Version!**
+
 ## Wiki
 
 Alle Informationen zur Verwendung des Loggers findest du im Wiki unter: https://github.com/kairichter/logger/wiki
 
 ## Voraussetzungen
 
-* PHP >= 7.1
+* PHP >= 7.0
 * PSR-Log >= 1.0 (https://packagist.org/packages/psr/log)
 * Monolog >= 1.22 (https://packagist.org/packages/monolog/monolog)
 * Symfony Var-Dumper >= 3.2 (https://packagist.org/packages/symfony/var-dumper)
 * Symfony Console >= 3.2 (https://packagist.org/packages/symfony/console)
-
-## Weitere Versionen
-
-Du findest eine für andere PHP-Versionen angepasste Version des Loggers in folgenden Branches:
-
-* [PHP 7.0](https://github.com/kairichter/logger/tree/7.0)
-* [PHP 5.6](https://github.com/kairichter/logger/tree/5.6)
 
 ## Installation
 
@@ -28,7 +23,7 @@ Wechsele in dein Projekt-Verzeichnis und lege eine `composer.json` mit folgendem
   "description": "This is my super cool description",
   "license": "GPL-2.0+",
   "require": {
-    "kairichter/logger": "dev-master"
+    "kairichter/logger": "7.0.x-dev"
   }
 }
 ```

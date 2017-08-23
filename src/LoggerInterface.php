@@ -38,7 +38,7 @@ interface LoggerInterface extends PsrLoggerInterface
      * @param string $name
      * @return Log|null
      */
-    public function getLog(string $name): ?Log;
+    public function getLog(string $name);
 
     /**
      * Remove log

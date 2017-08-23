@@ -93,7 +93,7 @@ class Logger implements LoggerInterface
      * @param string $name
      * @return Log|null
      */
-    public function getLog(string $name): ?Log
+    public function getLog(string $name)
     {
         if (isset($this->logs[$name])) {
             return $this->logs[$name];
