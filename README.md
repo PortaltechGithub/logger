@@ -2,7 +2,7 @@
 
 This logger is based on the PSR-3 Logger Interface and enables simultaneous logging into multiple destinations, such as file, MongoDB, Slack, ...
 
-## Wiki
+## Documentation
 
 You can find all information on using the Logger in the Wiki under: https://github.com/kairichter/logger/wiki
 
