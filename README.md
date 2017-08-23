@@ -29,6 +29,7 @@ Through Composer, obviously:
 composer require kairichter/logger
 ```
 
+## Examples
 
 In `vendor/kairichter/logger/examples/` you will find a detailed example of how to set up and use the Logger:
 
